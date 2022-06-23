@@ -1,5 +1,5 @@
 [build]
-  command = "sed -i \"s|{SERVER_HOST}|${DEPLOY_PRIME_URL}|g\" netlify.toml && npm install && npm run build"
+  command = "sed -i \"s|{SERVER_HOST}|${URL}|g\" netlify.toml && npm install && npm run build"
   functions = "functions/"
   publish = "dist/"
 

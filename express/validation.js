@@ -10,7 +10,7 @@ const headers = joi.object().keys({
   'x-auth-token': joi.string().required(),
   'store-hash': joi.string().required(),
   'api-version': joi.string().optional(),
-  'content-type': joi.string().equal('application/json').required(),
+  'content-type': joi.string().equal('application/json').optional(),
 }).unknown(true);
 
 module.exports = {

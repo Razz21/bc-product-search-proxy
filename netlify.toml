@@ -4,7 +4,20 @@
   publish = "dist/"
 
 [[redirects]]
-  from="/api/*"
-  to="/.netlify/functions/api/:splat"
-  status=307
-  force = true
+  from = "/api/*"
+  to = "/.netlify/functions/redirect/:splat"
+  status = 200
+
+# [[redirects]]
+#   from = "/someapi/*"
+#   to = "/.netlify/functions/api/products"
+#   status = 307
+#   force = true
+#   headers = { Access-Control-Allow-Origin = "*", Access-Control-Request-Method = "GET, POST, OPTIONS"}
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Request-Method = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin"

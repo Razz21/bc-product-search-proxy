@@ -5,7 +5,7 @@ const router = require('./router')
 
 const app = express();
 
-app.use(cors({credentials: true, origin: true}));
+app.use(cors({origin: "null"}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

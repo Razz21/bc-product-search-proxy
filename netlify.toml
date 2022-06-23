@@ -1,0 +1,10 @@
+[build]
+  command = "npm install && npm run build"
+  functions = "functions/"
+  publish = "dist/"
+
+[[redirects]]
+  from="/api/*"
+  to="/.netlify/functions/api/:splat"
+  status=307
+  force = true

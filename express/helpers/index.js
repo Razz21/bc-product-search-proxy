@@ -5,3 +5,7 @@ exports.validateHttpMethod = (event, validMethod="GET") => {
     throw error
   }
 }
+
+exports.corsHeaders = {
+  "Access-Control-Allow-Origin": "*"
+}

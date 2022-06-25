@@ -1,6 +1,6 @@
 const validator = require('../express/validation');
 const handler = require('../express/endpoints');
-const { validateHttpMethod } = require('../express/helpers');
+const { validateHttpMethod, corsHeaders } = require('../express/helpers');
 
 exports.handler = async (event, context) => {
   try {
@@ -15,17 +15,13 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       body: JSON.stringify(result),
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+      headers: corsHeaders
     }
   } catch (err) {
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({ message: err.message || 'Failed fetching data' }),
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
+      headers: corsHeaders
     }
   }
 }

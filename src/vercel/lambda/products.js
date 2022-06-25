@@ -1,6 +1,6 @@
-const validator = require('../src/validation');
-const handler = require('../src/endpoints');
-const { validateHttpMethod, allowCors } = require('../src/helpers');
+const validator = require('../../validation');
+const handler = require('../../endpoints');
+const { validateHttpMethod, allowCors } = require('../../helpers');
 
 module.exports = allowCors(async (req, res) => {
   try {

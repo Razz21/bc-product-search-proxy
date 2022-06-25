@@ -1,6 +1,6 @@
-const validator = require('../validation');
-const handler = require('../endpoints');
-const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../helpers');
+const validator = require('../../validation');
+const handler = require('../../endpoints');
+const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../../helpers');
 
 exports.handler = corsMiddleware(async (event, context) => {
   try {

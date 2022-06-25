@@ -2,8 +2,11 @@
   "name": "bc-product-search-proxy",
   "version": "0.0.1",
   "main": "functions/api.js",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
-    "build:netlify": "netlify-lambda build src/lambda",
+    "build:netlify": "netlify-lambda build src/netlify/lambda",
     "build": "echo \"Starting Vercel build\""
   },
   "repository": {
@@ -12,7 +15,8 @@
   },
   "keywords": [
     "netlify",
-    "aplience",
+    "vercel",
+    "amplience",
     "bigcommerce"
   ],
   "author": "Razz21",

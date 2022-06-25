@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
       body: "Hello, world!",
       headers: {
         "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
         'Access-Control-Allow-Methods': '*',
       },
     }

@@ -4,28 +4,41 @@ const joi = require('joi').extend(joi => ({
     value: value.split ? value.split(',') : value,
   }),
   type: 'versionArray',
+})).extend(joi => ({
+  base: joi.object(),
+  coerce: (value, helpers) => {
+    try {
+      return { value: JSON.parse(value) };
+    } catch (_) {
+      return
+    }
+  },
+  type: 'json',
+  messages: {
+    'object.base': `"body" must be a valid JSON`
+  }
 }))
 
 const headers = joi.object().keys({
   'x-auth-token': joi.string().required(),
   'store-hash': joi.string().required(),
   'api-version': joi.string().optional(),
-  'content-type': joi.string().equal('application/json').optional(),
+  'content-type': joi.string().equal('application/json').required(),
 }).unknown(true);
 
 module.exports = {
-  productSearch: {
+  productSearch: joi.object({
     headers,
-    body: joi.object({
+    body: joi.json({
       search_text: joi.string().trim().required(),
       page: joi.number().integer().required(),
       limit: joi.number().integer().required(),
     }).unknown(true)
-  },
-  products: {
+  }).unknown(true),
+  products: joi.object({
     headers,
-    query: joi.object({
+    queryStringParameters: joi.object({
       ids: joi.versionArray().items(joi.string()).required(),
     }).unknown(true)
-  }
+  }).unknown(true)
 }

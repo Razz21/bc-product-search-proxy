@@ -1,21 +1,21 @@
 const getProducts = require('./get-products');
 
-async function search(req, res) {
-  const { search_text, page, limit } = req.body
+async function search(event, context) {
+  const { search_text, page, limit } = JSON.parse(event.body)
   const query = {
     'keyword:like': search_text,
     page,
     limit
   }
-  return getProducts(req, res, query, req.body);
+  return getProducts(event, query, event.body);
 }
 
-async function find(req, res) {
-  const { ids } = req.query
+async function find(event, context) {
+  const { ids } = event.queryStringParameters
   const query = {
     'id:in': ids
   }
-  return getProducts(req, res, query, req.query);
+  return getProducts(event, query, event.queryStringParameters);
 }
 
 module.exports = {

@@ -2,7 +2,7 @@ const qs = require('qs');
 const fetch = require('cross-fetch');
 const getHeaders = require('./get-headers')
 
-async function getProducts(req, res, query, params) {
+async function getProducts(req, query, params) {
   try {
     const store_hash = req.headers['store-hash'];
     const api_version = req.headers['api-version'] || 'v3';
@@ -17,7 +17,7 @@ async function getProducts(req, res, query, params) {
     const requestParams = {
       method: "GET",
       headers: {
-        ...await getHeaders(req, res)
+        ...await getHeaders(req)
       }
     }
 
@@ -37,11 +37,11 @@ async function getProducts(req, res, query, params) {
       curPage: page,
       total: meta.pagination.total
     }
-    res.status(200).json({ items, page: pageSettings });
+    return { items, page: pageSettings }
 
   } catch (err) {
     console.error(err)
-    res.status(500).json({ code: 'UNKNOWN', message: 'An unknown error occured' });
+    throw err;
   }
 }
 

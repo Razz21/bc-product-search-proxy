@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "functions/api.js",
   "scripts": {
-    "build:netlify": "netlify-lambda build src/lambda"
+    "build:netlify": "netlify-lambda build src/lambda",
+    "build": "echo \"Starting Vercel build\""
   },
   "repository": {
     "type": "git",

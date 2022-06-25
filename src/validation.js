@@ -8,6 +8,9 @@ const joi = require('joi').extend(joi => ({
   base: joi.object(),
   coerce: (value, helpers) => {
     try {
+      if(typeof value === "object"){
+        return { value }
+      }
       return { value: JSON.parse(value) };
     } catch (_) {
       return
@@ -37,7 +40,7 @@ module.exports = {
   }).unknown(true),
   products: joi.object({
     headers,
-    queryStringParameters: joi.object({
+    query: joi.object({
       ids: joi.versionArray().items(joi.string()).required(),
     }).unknown(true)
   }).unknown(true)

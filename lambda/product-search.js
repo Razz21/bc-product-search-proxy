@@ -3,14 +3,14 @@ const handler = require('../express/endpoints');
 const { validateHttpMethod, corsHeaders } = require('../express/helpers');
 
 exports.handler = async (event, context) => {
-  if(event.httpMethod === "OPTIONS"){
+  if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
       body: "Hello, world!",
       headers: {
         "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
-        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Headers': "store-hash, api-version, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
+        'Access-Control-Allow-Methods': 'GET, POST',
       },
     }
   }

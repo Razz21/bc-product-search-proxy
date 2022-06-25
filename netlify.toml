@@ -10,6 +10,10 @@
   to = "/.netlify/functions/:splat"
   status = 200
   force = true
+  [redirects.headers]
+    X-From = "Netlify"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Request-Method = "GET, POST, OPTIONS"
 
 [[headers]]
   for = "/*"

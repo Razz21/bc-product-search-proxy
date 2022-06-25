@@ -3,15 +3,26 @@
 [![Netlify
 Status](https://api.netlify.com/api/v1/badges/9aaef7de-1e5d-4fda-bc39-faa10a68b35b/deploy-status)](https://app.netlify.com/sites/bc-product-search-proxy/deploys)
 
-[![Deploy to
-Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Razz21/bc-product-search-proxy)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Razz21/bc-product-search-proxy)
 
-## Building
+
+[![Deploy witt Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRazz21%2Fbc-product-search-proxy)
+
+---
+## Development with Netlify
 
 Run locally in developer mode, app automatically rebuilds the app when changes are made.
 ```
 $ npm install -g netlify-cli
 $ netlify dev
+```
+
+## Development with Vercel
+
+Run locally in developer mode, app automatically rebuilds the app when changes are made.
+```
+$ npm install -g vercel
+$ vercel dev
 ```
 
 ### Request Parameters

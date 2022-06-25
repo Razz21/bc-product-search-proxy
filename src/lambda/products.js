@@ -1,16 +1,16 @@
-const validator = require('../express/validation');
-const handler = require('../express/endpoints');
-const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../express/helpers');
+const validator = require('../validation');
+const handler = require('../endpoints');
+const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../helpers');
 
 exports.handler = corsMiddleware(async (event, context) => {
   try {
-    validateHttpMethod(event, "POST");
-    const { error } = await validator.productSearch.validate(event)
+    validateHttpMethod(event, "GET");
+    const { error } = await validator.products.validate(event)
     if (error) {
       error.statusCode = 400;
       throw error;
     };
-    const result = await handler.search(event, context);
+    const result = await handler.find(event, context);
 
     return {
       statusCode: 200,

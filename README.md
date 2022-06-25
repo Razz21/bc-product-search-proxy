@@ -10,8 +10,8 @@ Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com
 
 Run locally in developer mode, app automatically rebuilds the app when changes are made.
 ```
-$ npm install
-$ npm run build && npm run start
+$ npm install -g netlify-cli
+$ netlify dev
 ```
 
 ### Request Parameters

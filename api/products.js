@@ -1,8 +1,8 @@
 const validator = require('../src/validation');
 const handler = require('../src/endpoints');
-const { validateHttpMethod, corsHeaders } = require('../src/helpers');
+const { validateHttpMethod, allowCors } = require('../src/helpers');
 
-module.exports = async (req, res) => {
+module.exports = allowCors(async (req, res) => {
   try {
     validateHttpMethod(req, "GET");
     const { error } = await validator.products.validate(req)
@@ -14,4 +14,4 @@ module.exports = async (req, res) => {
   } catch (err) {
     res.status(err.statusCode || 500).json({ message: err.message || 'Failed fetching data' })
   }
-}
+})

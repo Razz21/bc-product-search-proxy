@@ -1,6 +1,6 @@
-exports.validateHttpMethod = (event, validMethod = "GET") => {
-  if (event.httpMethod !== validMethod) {
-    const error = new Error(`${event.httpMethod} is not allowed!`)
+exports.validateHttpMethod = (req, validMethod = "GET") => {
+  if (req.method !== validMethod) {
+    const error = new Error(`${req.method} is not allowed!`)
     error.statusCode = 405
     throw error
   }
@@ -22,4 +22,12 @@ exports.corsMiddleware = (fn) => async (event, context) => {
     }
   }
   return fn.call(null, event, context)
+}
+
+exports.transformAwsEventToRequest = (event) =>{
+  return {
+    ...event,
+    query: event.queryStringParameters,
+    method: event.httpMethod
+  }
 }

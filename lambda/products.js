@@ -23,6 +23,9 @@ exports.handler = async (event, context) => {
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({ message: err.message || 'Failed fetching data' }),
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
     }
   }
 }

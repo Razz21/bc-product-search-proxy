@@ -1,11 +1,13 @@
 [build]
-  command = "sed -i \"s|{SERVER_HOST}|${URL}|g\" netlify.toml && npm install && npm run build"
+  command = "npm install && npm run build:netlify"
   functions = "functions/"
   publish = "dist/"
+[dev]
+  autoLaunch = false
 
 [[redirects]]
   from = "/api/*"
-  to = "{SERVER_HOST}/.netlify/functions/api/:splat"
+  to = "/.netlify/functions/:splat"
   status = 200
   force = true
   [redirects.headers]

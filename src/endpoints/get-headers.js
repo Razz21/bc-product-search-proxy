@@ -1,8 +1,8 @@
 const getToken = require('./get-token')
 
-async function getHeaders(req, res) {
+async function getHeaders(req) {
   return {
-    'X-Auth-Token': await getToken(req, res),
+    'X-Auth-Token': await getToken(req),
     "Content-Type": "application/json"
   };
 }

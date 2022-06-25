@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "functions/api.js",
   "scripts": {
-    "build": "netlify-lambda build lambda",
-    "start": "nodemon server-local.js"
+    "build:netlify": "netlify-lambda build src/lambda",
+    "build": "echo \"Starting Vercel build\""
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "netlify",
-    "express.js"
+    "aplience",
+    "bigcommerce"
   ],
   "author": "Razz21",
   "license": "Apache-2.0",
@@ -21,17 +22,10 @@
   },
   "homepage": "https://github.com/Razz21/bc-product-search-proxy#readme",
   "devDependencies": {
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
     "cross-fetch": "^3.1.5",
-    "encoding": "^0.1.13",
-    "express": "^4.18.1",
-    "express-validation": "^4.1.0",
-    "isomorphic-fetch": "^3.0.0",
     "joi": "^17.6.0",
+    "encoding": "^0.1.13",
     "netlify-lambda": "^2.0.15",
-    "nodemon": "^2.0.16",
-    "qs": "^6.10.5",
-    "serverless-http": "^3.0.1"
+    "qs": "^6.10.5"
   }
 }

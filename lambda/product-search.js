@@ -3,6 +3,17 @@ const handler = require('../express/endpoints');
 const { validateHttpMethod, corsHeaders } = require('../express/helpers');
 
 exports.handler = async (event, context) => {
+  if(event.httpMethod === "OPTIONS"){
+    return {
+      statusCode: 200,
+      body: "Hello, world!",
+      headers: {
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
+      },
+    }
+  }
   try {
     validateHttpMethod(event, "POST");
     const { error } = await validator.productSearch.validate(event)

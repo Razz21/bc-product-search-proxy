@@ -7,5 +7,5 @@ exports.validateHttpMethod = (event, validMethod="GET") => {
 }
 
 exports.corsHeaders = {
-  "Access-Control-Allow-Origin": "file://"
+  "Access-Control-Allow-Origin": "*"
 }

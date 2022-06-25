@@ -1,19 +1,8 @@
 const validator = require('../express/validation');
 const handler = require('../express/endpoints');
-const { validateHttpMethod, corsHeaders } = require('../express/helpers');
+const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../express/helpers');
 
-exports.handler = async (event, context) => {
-  if (event.httpMethod === "OPTIONS") {
-    return {
-      statusCode: 200,
-      body: "Hello, world!",
-      headers: {
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': "store-hash, api-version, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
-        'Access-Control-Allow-Methods': 'GET, POST',
-      },
-    }
-  }
+exports.handler = corsMiddleware(async (event, context) => {
   try {
     validateHttpMethod(event, "POST");
     const { error } = await validator.productSearch.validate(event)
@@ -35,4 +24,4 @@ exports.handler = async (event, context) => {
       headers: corsHeaders
     }
   }
-}
+})

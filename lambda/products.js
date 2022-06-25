@@ -1,8 +1,8 @@
 const validator = require('../express/validation');
 const handler = require('../express/endpoints');
-const { validateHttpMethod, corsHeaders } = require('../express/helpers');
+const { validateHttpMethod, corsHeaders, corsMiddleware } = require('../express/helpers');
 
-exports.handler = async (event, context) => {
+exports.handler = corsMiddleware(async (event, context) => {
   try {
     validateHttpMethod(event, "GET");
     const { error } = await validator.products.validate(event)
@@ -24,4 +24,4 @@ exports.handler = async (event, context) => {
       headers: corsHeaders
     }
   }
-}
+})

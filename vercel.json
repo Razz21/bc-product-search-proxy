@@ -14,11 +14,11 @@
       "src": "api/*.js",
       "use": "@vercel/node",
       "config": { "includeFiles": "public/**" }
+    },
+    {
+      "src": "api/*.ts",
+      "use": "@vercel/node",
+      "config": { "includeFiles": "public/**" }
     }
-  ],
-  "rewrites": [
-    { "source": "/api", "destination": "api/api.js" },
-    { "source": "/api/products", "destination": "api/products.js" },
-    { "source": "/api/product-search", "destination": "api/product-search.js" }
   ]
 }

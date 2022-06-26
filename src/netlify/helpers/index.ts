@@ -3,20 +3,6 @@ import { HTTPMethods } from "@/types";
 import type { AwsRequest, HTTPMethod } from "@/types";
 import type { HandlerEvent, HandlerContext, Handler } from "@netlify/functions";
 
-export const handleError = (err: unknown) => {
-  let statusCode, message;
-
-  if (err instanceof StatusError) {
-    ({ statusCode, message } = err);
-  } else if (err instanceof Error) {
-    message = err.message;
-  }
-  return {
-    statusCode: statusCode || 500,
-    body: JSON.stringify({ message: message || "Failed fetching data" }),
-    headers: corsHeaders,
-  };
-};
 export const handleResponse = (result: unknown) => {
   return {
     statusCode: 200,

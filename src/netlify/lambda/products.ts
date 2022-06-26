@@ -3,11 +3,11 @@ import validator from "@/validation";
 import {
   validateRequest,
   validateHttpMethod,
+  handleError,
 } from "@/helpers";
 import {
   corsMiddleware,
   transformAwsEventToRequest,
-  handleError,
   handleResponse,
 } from '../helpers'
 import { HTTPMethods } from "@/types";

@@ -1,0 +1,12 @@
+{
+  "name": "bc-product-search-proxy/vercel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.ts",
+  "scripts": {
+    "build": "npm run cleanup && webpack --config ./webpack.config.ts",
+    "cleanup": "rimraf ../../functions ../../public"
+  },
+  "author": "Razz21",
+  "license": "ISC"
+}

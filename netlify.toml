@@ -1,7 +1,7 @@
 [build]
-  command = "npm install && npm run build:netlify"
-  functions = "functions/"
-  publish = "dist/"
+  command = "npm install && npm run build"
+  functions = "api/"
+  publish = "public/"
 [dev]
   autoLaunch = false
 

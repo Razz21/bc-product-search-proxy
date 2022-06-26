@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "public" }
+    },
+    {
+      "src": "src/vercel/api/*.ts",
+      "use": "@vercel/node",
+      "config": { "includeFiles": "public/**" }
+    }
+  ],
+  "rewrites": [
+    { "source": "/api", "destination": "functions/api.js" },
+    { "source": "/api/products", "destination": "functions/products.js" },
+    { "source": "/api/product-search", "destination": "functions/product-search.js" }
+  ]
+}

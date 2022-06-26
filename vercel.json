@@ -11,21 +11,13 @@
       "config": { "distDir": "public" }
     },
     {
-      "src": "api/*.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": "public/**" }
-    },
-    {
       "src": "api/*.ts",
-      "use": "@vercel/node",
-      "config": { "includeFiles": "public/**" }
+      "use": "@vercel/node"
     }
   ],
   "rewrites": [
-    { "source": "/api", "destination": "api/api.js" },
-    { "source": "/api/products", "destination": "api/products.js" },
-    { "source": "/api/product-search", "destination": "api/product-search.js" },
-    { "source": "/api/server", "destination": "api/server.js" },
-    { "source": "/api/tserver", "destination": "api/tserver.ts" }
+    { "source": "/api", "destination": "api/api.ts" },
+    { "source": "/api/products", "destination": "api/products.ts" },
+    { "source": "/api/product-search", "destination": "api/product-search.ts" }
   ]
 }

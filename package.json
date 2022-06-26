@@ -5,13 +5,7 @@
     "node": "16"
   },
   "scripts": {
-    "prebuild": "netlify-lambda build src/netlify/lambda --config ./webpack.config.js",
-    "build": "echo \"Building...\""
-  },
-  "build": {
-    "env": {
-      "NODEJS_AWS_HANDLER_NAME": "handler"
-    }
+    "build": "echo \"Building Serverless Functions...\""
   },
   "repository": {
     "type": "git",

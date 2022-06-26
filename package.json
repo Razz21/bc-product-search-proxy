@@ -5,7 +5,7 @@
     "node": "16"
   },
   "scripts": {
-    "build": "rimraf ./api && webpack --config ./webpack.config.ts"
+    "build": "netlify-lambda build src/netlify/lambda --config ./webpack.config.js"
   },
   "build": {
     "env": {

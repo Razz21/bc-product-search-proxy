@@ -1,8 +1,9 @@
-const qs = require('qs');
-const fetch = require('cross-fetch');
-const getHeaders = require('./get-headers')
+import qs from 'qs';
+import fetch from 'cross-fetch';
+import getHeaders from './get-headers';
+import type { ServerlessRequest, BigCommerceResponse } from '@/types';
 
-async function getProducts(req, query, params) {
+async function getProducts(req: ServerlessRequest, query: Record<string,unknown>, params: Record<string, unknown> = {}) {
   try {
     const store_hash = req.headers['store-hash'];
     const api_version = req.headers['api-version'] || 'v3';
@@ -13,17 +14,14 @@ async function getProducts(req, query, params) {
       ...query,
       include: "primary_image",
     });
-
     const requestParams = {
       method: "GET",
-      headers: {
-        ...await getHeaders(req)
-      }
+      headers: await getHeaders(req)
     }
 
     const response = await fetch(apiEndpoint + '?' + queryParams, requestParams);
 
-    const { data, meta = {} } = await response.json();
+    const { data, meta }: BigCommerceResponse = await response.json();
 
     const items = data.map((item) => {
       return {
@@ -45,4 +43,4 @@ async function getProducts(req, query, params) {
   }
 }
 
-module.exports = getProducts;
+export default getProducts;

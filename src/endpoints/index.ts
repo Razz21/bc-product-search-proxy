@@ -1,6 +1,8 @@
-const getProducts = require('./get-products');
+import getProducts from './get-products';
+import type { ServerlessRequest } from '@/types';
 
-async function search(req) {
+
+async function search(req: ServerlessRequest) {
   const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body
   const { search_text, page, limit } = body
   const query = {
@@ -11,15 +13,15 @@ async function search(req) {
   return getProducts(req, query, body);
 }
 
-async function find(req) {
-  const { ids } = req.query
+async function find(req: ServerlessRequest) {
+  const { ids } = req.query!
   const query = {
     'id:in': ids
   }
-  return getProducts(req, query, req.query);
+  return getProducts(req, query);
 }
 
-module.exports = {
+export {
   search,
   find
 }

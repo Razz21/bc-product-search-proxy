@@ -1,9 +1,7 @@
-const handler = function (event, ctx) {
+exports.handler = async function (event, context, callback) {
   return {
     statusCode: 200,
-    body: "server endpoint"
-  }
-}
-export {
-  handler
-}
+    headers: {},
+    body: 'Hello world',
+  };
+};

@@ -5,7 +5,8 @@
     "node": "16"
   },
   "scripts": {
-    "build": "netlify-lambda build src/netlify/lambda --config ./webpack.config.js"
+    "prebuild": "netlify-lambda build src/netlify/lambda --config ./webpack.config.js",
+    "build": "echo \"Building...\""
   },
   "build": {
     "env": {

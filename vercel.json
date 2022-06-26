@@ -3,5 +3,22 @@
     "env": {
       "NODEJS_AWS_HANDLER_NAME": "handler"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "public" }
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": "public/**" }
+    }
+  ],
+  "rewrites": [
+    { "source": "/api", "destination": "api/api.js" },
+    { "source": "/api/products", "destination": "api/products.js" },
+    { "source": "/api/product-search", "destination": "api/product-search.js" }
+  ]
 }

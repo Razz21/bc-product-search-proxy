@@ -8,11 +8,10 @@ import {
   handleResponse,
 } from "./_helpers";
 
-import { HTTPMethods } from "./_types";
-import type { HandlerEvent, HandlerContext } from "@netlify/functions";
+import { HTTPMethods, AsyncHandler } from "./_types";
 
-const handler = corsMiddleware(
-  async (event: HandlerEvent, context: HandlerContext) => {
+const handler: AsyncHandler = corsMiddleware(
+  async (event, context) => {
     try {
       validateHttpMethod(event, HTTPMethods.GET);
       await validateRequest(event, validator.products);

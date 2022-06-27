@@ -1,7 +1,7 @@
-import type { ServerlessRequest, HTTPMethod } from "../_types";
+import type { ServerlessRequest, HTTPMethod, AsyncHandler } from "../_types";
 import { HTTPMethods } from "../_types";
 import Joi, { ValidationError } from "joi";
-import type { HandlerEvent, HandlerContext, Handler } from "@netlify/functions";
+import type { HandlerEvent, HandlerContext, HandlerResponse } from "@netlify/functions";
 
 export class StatusError extends Error {
   statusCode?: number;
@@ -38,7 +38,7 @@ export const validateRequest = async (
 };
 
 export const handleError = (err: unknown) => {
-  let statusCode, message;
+  let statusCode: number, message: string;
 
   if (err instanceof StatusError) {
     ({ statusCode, message } = err);
@@ -61,7 +61,7 @@ export const handleResponse = (result: unknown) => {
 };
 
 export const corsMiddleware =
-  (fn: Handler) => async (event: HandlerEvent, context: HandlerContext) => {
+  (fn: AsyncHandler) => async (event: HandlerEvent, context: HandlerContext): Promise<HandlerResponse> => {
     if (event.httpMethod === HTTPMethods.OPTIONS) {
       return {
         statusCode: 200,

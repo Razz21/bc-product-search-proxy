@@ -1,6 +1,6 @@
-import { Handler } from "@netlify/functions";
+import type { AsyncHandler } from './_types';
 
-const handler: Handler = async (event, context) => {
+const handler: AsyncHandler = async (event, context) => {
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Hello World" }),

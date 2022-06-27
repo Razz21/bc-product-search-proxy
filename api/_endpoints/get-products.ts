@@ -1,9 +1,9 @@
 import qs from 'qs';
 import fetch from 'cross-fetch';
 import getHeaders from './get-headers';
-import type { ServerlessRequest, BigCommerceResponse } from '../_types';
+import type { ServerlessRequest, BigCommerceResponse, ResponseBody } from '../_types';
 
-async function getProducts(req: ServerlessRequest, query: Record<string,unknown>, params: Record<string, unknown> = {}) {
+async function getProducts(req: ServerlessRequest, query: Record<string,unknown>, params: Record<string, unknown> = {}): Promise<ResponseBody> {
   try {
     const store_hash = req.headers['store-hash'];
     const api_version = req.headers['api-version'] || 'v3';

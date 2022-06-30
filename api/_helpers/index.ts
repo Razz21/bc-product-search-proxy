@@ -2,16 +2,14 @@ import type { ServerlessRequest, HTTPMethod, AsyncHandler } from "../_types";
 import { HTTPMethods } from "../_types";
 import Joi, { ValidationError } from "joi";
 import type { HandlerEvent, HandlerContext, HandlerResponse } from "@netlify/functions";
+import { error } from "console";
 
 export class StatusError extends Error {
   statusCode?: number;
 }
 
-export const validateHttpMethod = (
-  req: ServerlessRequest,
-  validMethod: HTTPMethod = "GET"
-) => {
-  if (req.httpMethod !== validMethod) {
+export const validateHttpMethod = (req: ServerlessRequest, validMethod: HTTPMethod = "GET") => {
+  if (req.httpMethod.toLowerCase() !== validMethod.toLowerCase()) {
     const error = new StatusError(`${req.httpMethod} is not allowed!`);
     error.statusCode = 405;
     throw error;
@@ -26,12 +24,11 @@ export const corsHeaders = {
   "Access-Control-Allow-Credentials": "true",
 };
 
-export const validateRequest = async (
-  req: ServerlessRequest,
-  requestValidator: Joi.Schema
-) => {
-  const { error } = await requestValidator.validate(req);
-  if (error) {
+export const validateRequest = async (req: ServerlessRequest, requestValidator: Joi.Schema) => {
+  try {
+    const value = await requestValidator.validateAsync(req);
+    return value;
+  } catch (error) {
     (error as ValidationError as StatusError).statusCode = 400;
     throw error;
   }
@@ -48,7 +45,6 @@ export const handleError = (err: unknown) => {
   return {
     statusCode: statusCode || 500,
     body: JSON.stringify({ message: message || "Failed fetching data" }),
-    headers: corsHeaders,
   };
 };
 
@@ -56,16 +52,15 @@ export const handleResponse = (result: unknown) => {
   return {
     statusCode: 200,
     body: JSON.stringify(result),
-    headers: corsHeaders,
   };
 };
 
 export const corsMiddleware =
-  (fn: AsyncHandler) => async (event: HandlerEvent, context: HandlerContext): Promise<HandlerResponse> => {
+  (fn: AsyncHandler) =>
+  async (event: HandlerEvent, context: HandlerContext): Promise<HandlerResponse> => {
     if (event.httpMethod === HTTPMethods.OPTIONS) {
       return {
         statusCode: 200,
-        body: "Hello, world!",
         headers: corsHeaders,
       };
     }

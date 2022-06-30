@@ -7,7 +7,7 @@ async function getProducts(req: ServerlessRequest, query: Record<string,unknown>
   try {
     const store_hash = req.headers['store-hash'];
     const api_version = req.headers['api-version'] || 'v3';
-    const { page = 0 } = params;
+    const { page = 1 } = params;
     const apiEndpoint = `https://api.bigcommerce.com/stores/${store_hash}/${api_version}/catalog/products`;
 
     const queryParams = qs.stringify({

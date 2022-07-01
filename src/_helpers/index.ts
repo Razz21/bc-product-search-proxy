@@ -15,10 +15,10 @@ export const validateHttpMethod = (req: ServerlessRequest, validMethod: HTTPMeth
 };
 
 export const corsHeaders = {
-  "access-control-allow-origin": "*",
+  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "store-hash, api-version, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
-  "Access-Control-Allow-Methods": "GET, POST",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Credentials": "true",
 };
 
@@ -43,6 +43,7 @@ export const handleError = (err: unknown) => {
   return {
     statusCode: statusCode || 500,
     body: JSON.stringify({ message: message || "Failed fetching data" }),
+    headers: corsHeaders
   };
 };
 

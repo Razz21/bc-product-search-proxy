@@ -3,7 +3,7 @@ import type { Root, ArraySchema, ObjectSchema, CustomHelpers, Extension } from "
 
 interface ExtendedJoi extends Root {
   versionArray(): ArraySchema;
-  json(): ObjectSchema;
+  json<T extends any>(schema?: joiRoot.PartialSchemaMap<T>): ObjectSchema<T>;
 }
 
 const arrayExtension: Extension = {
@@ -15,6 +15,7 @@ const arrayExtension: Extension = {
 };
 const jsonExtension: Extension = {
   base: joiRoot.object(),
+  type: "json",
   coerce: {
     from: "string",
     method: (value: string, helpers: CustomHelpers) => {
@@ -25,7 +26,6 @@ const jsonExtension: Extension = {
       }
     },
   },
-  type: "json",
   messages: {
     "object.invalid": `"{{#label}}" must be a valid JSON`,
   },
@@ -48,8 +48,7 @@ export default {
     .object({
       headers,
       body: joi
-        .json()
-        .keys({
+        .json({
           search_text: joi.string().trim().required(),
           page: joi.number().integer().min(0).required(),
           limit: joi.number().integer().positive().required(),

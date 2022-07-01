@@ -12,15 +12,19 @@ import { HTTPMethods, AsyncHandler } from "../types";
 
 const handler: AsyncHandler = corsMiddleware(
   async (event, context) => {
-    try {
-      validateHttpMethod(event, HTTPMethods.POST);
-      await validateRequest(event, validator.productSearch);
-
-      const result = await apiHandler.search(event);
-      return handleResponse(result);
-    } catch (err) {
-      return handleError(err);
+    return {
+      statusCode: 200,
+      body: event.body
     }
+    // try {
+    //   validateHttpMethod(event, HTTPMethods.POST);
+    //   await validateRequest(event, validator.productSearch);
+
+    //   const result = await apiHandler.search(event);
+    //   return handleResponse(result);
+    // } catch (err) {
+    //   return handleError(err);
+    // }
   }
 );
 

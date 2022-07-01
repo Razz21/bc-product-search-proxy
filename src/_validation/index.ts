@@ -31,7 +31,7 @@ const jsonExtension: Extension = {
   },
 }
 
-const joi: ExtendedJoi = joiRoot.extend(arrayExtension, jsonExtension)
+const joi: ExtendedJoi = joiRoot.extend(jsonExtension, arrayExtension)
 
 const headers = joi.object().keys({
   'x-auth-token': joi.string().required(),

@@ -28,8 +28,9 @@ export const validateRequest = async (req: ServerlessRequest, requestValidator: 
     const value = await requestValidator.validateAsync(req);
     return value;
   } catch (error) {
-    (error as ValidationError as StatusError).statusCode = 400;
-    throw error;
+    const e = new StatusError(error.message)
+    e.statusCode  = 400;
+    throw e;
   }
 };
 

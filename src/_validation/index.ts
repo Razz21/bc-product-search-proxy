@@ -47,13 +47,13 @@ export default {
   productSearch: joi
     .object({
       headers,
-      body: joi
-        .json({
-          search_text: joi.string().trim().required(),
-          page: joi.number().integer().min(0).required(),
-          limit: joi.number().integer().positive().required(),
-        })
-        .unknown(true),
+      // body: joi
+      //   .json({
+      //     search_text: joi.string().trim().required(),
+      //     page: joi.number().integer().min(0).required(),
+      //     limit: joi.number().integer().positive().required(),
+      //   })
+      //   .unknown(true),
     })
     .unknown(true),
   products: joi

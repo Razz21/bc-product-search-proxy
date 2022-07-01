@@ -1,4 +1,4 @@
-import type { AsyncHandler } from '~/types';
+import type { AsyncHandler } from '../types';
 
 const handler: AsyncHandler = async (event, context) => {
   return {

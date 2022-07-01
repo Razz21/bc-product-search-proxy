@@ -1,5 +1,5 @@
-import type { ServerlessRequest, HTTPMethod, AsyncHandler } from "~/types";
-import { HTTPMethods } from "~/types";
+import type { ServerlessRequest, HTTPMethod, AsyncHandler } from "../../types";
+import { HTTPMethods } from "../../types";
 import Joi, { ValidationError } from "joi";
 import type { HandlerEvent, HandlerContext, HandlerResponse } from "@netlify/functions";
 export class StatusError extends Error {

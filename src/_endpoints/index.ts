@@ -1,5 +1,5 @@
 import getProducts from './get-products';
-import type { ServerlessRequest } from '~/types';
+import type { ServerlessRequest } from '../../types';
 
 
 async function search(req: ServerlessRequest) {

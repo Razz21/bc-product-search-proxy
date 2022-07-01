@@ -6,22 +6,31 @@ import {
   handleError,
   corsMiddleware,
   handleResponse,
+  corsHeaders,
 } from "../src/_helpers";
 
 import { HTTPMethods, AsyncHandler } from "../types";
 
-const handler: AsyncHandler = corsMiddleware(
-  async (event, context) => {
-    try {
-      validateHttpMethod(event, HTTPMethods.POST);
-      await validateRequest(event, validator.productSearch);
-
-      const result = await apiHandler.search(event);
-      return handleResponse(result);
-    } catch (err) {
-      return handleError(err);
-    }
+const handler = async (event, context) => {
+  return {
+    statusCode: 200,
+    headers: corsHeaders,
+    body: JSON.stringify({items: []})
   }
-);
+}
+
+// const handler: AsyncHandler = corsMiddleware(
+//   async (event, context) => {
+//     try {
+//       validateHttpMethod(event, HTTPMethods.POST);
+//       await validateRequest(event, validator.productSearch);
+
+//       const result = await apiHandler.search(event);
+//       return handleResponse(result);
+//     } catch (err) {
+//       return handleError(err);
+//     }
+//   }
+// );
 
 export { handler };

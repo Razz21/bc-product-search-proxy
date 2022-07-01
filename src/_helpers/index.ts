@@ -15,7 +15,7 @@ export const validateHttpMethod = (req: ServerlessRequest, validMethod: HTTPMeth
 };
 
 export const corsHeaders = {
-  "Access-Control-Allow-Origin": "null",
+  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "store-hash, api-version, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",

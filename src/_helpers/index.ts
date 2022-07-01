@@ -20,6 +20,7 @@ export const corsHeaders = {
     "store-hash, api-version, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Credentials": "true",
+  "access-control-request-headers": "content-type"
 };
 
 export const validateRequest = async (req: ServerlessRequest, requestValidator: Joi.Schema) => {

@@ -83,6 +83,7 @@ describe("helpers", () => {
     expect(response).toEqual({
       statusCode: 200,
       body: JSON.stringify(body),
+      headers: helpers.corsHeaders
     });
   });
 

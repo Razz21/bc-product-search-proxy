@@ -1,6 +1,6 @@
 import { HandlerContext, HandlerEvent } from "@netlify/functions";
-import { BigCommerceResponse, ResponseBody } from "~/api/_types";
-import { StatusError } from '~/api/_helpers';
+import { BigCommerceResponse, ResponseBody } from "~/types";
+import { StatusError } from '~/src/_helpers';
 
 export const getEvent = (options: Partial<HandlerEvent> = {} ) =>  options as HandlerEvent;
 export const getContext = (options: Partial<HandlerContext> = {}) =>  options as HandlerContext;

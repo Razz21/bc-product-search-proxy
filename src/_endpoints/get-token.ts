@@ -1,4 +1,4 @@
-import type { ServerlessRequest } from '../_types';
+import type { ServerlessRequest } from '~/types';
 
 async function getToken(req: ServerlessRequest): Promise<string> {
   return new Promise((resolve, reject) => {

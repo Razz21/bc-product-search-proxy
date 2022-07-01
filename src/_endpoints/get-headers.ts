@@ -1,5 +1,5 @@
 import getToken from './get-token';
-import type { ServerlessRequest } from '../_types';
+import type { ServerlessRequest } from '~/types';
 
 async function getHeaders(req: ServerlessRequest) {
   return {

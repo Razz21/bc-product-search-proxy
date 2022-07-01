@@ -1,4 +1,4 @@
-import getHeaders from "~/api/_endpoints/get-headers";
+import getHeaders from "~/src/_endpoints/get-headers";
 import { getEvent } from "../utils";
 
 describe("endpoints/getHeaders", () => {

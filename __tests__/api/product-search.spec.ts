@@ -1,12 +1,12 @@
 import { HandlerContext, HandlerEvent } from "@netlify/functions";
 import { handler } from "~/api/product-search";
-import { HTTPMethods } from "~/api/_types";
-import * as helpers from "~/api/_helpers";
-import validator from "~/api/_validation";
-import getProducts from "~/api/_endpoints/get-products";
+import { HTTPMethods } from "~/types";
+import * as helpers from "~/src/_helpers";
+import validator from "~/src/_validation";
+import getProducts from "~/src/_endpoints/get-products";
 import { createStatusError, getContext, getEvent, responseBody } from "../utils";
 
-jest.mock("~/api/_endpoints/get-products", () => jest.fn());
+jest.mock("~/src/_endpoints/get-products", () => jest.fn());
 
 (getProducts as jest.Mock).mockImplementation(() => responseBody);
 

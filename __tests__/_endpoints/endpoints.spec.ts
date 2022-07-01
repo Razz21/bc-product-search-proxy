@@ -1,8 +1,8 @@
-import * as endpoints from "~/api/_endpoints";
-import getProducts from "~/api/_endpoints/get-products";
-import { createStatusError, getContext, getEvent, responseBody } from "../utils";
+import * as endpoints from "~/src/_endpoints";
+import getProducts from "~/src/_endpoints/get-products";
+import { getEvent, responseBody } from "../utils";
 
-jest.mock("~/api/_endpoints/get-products", () => jest.fn());
+jest.mock("~/src/_endpoints/get-products", () => jest.fn());
 
 (getProducts as jest.Mock).mockImplementation(() => responseBody);
 

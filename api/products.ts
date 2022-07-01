@@ -1,14 +1,14 @@
-import * as apiHandler from "./_endpoints";
-import validator from "./_validation";
+import * as apiHandler from "~/src/_endpoints";
+import validator from "~/src/_validation";
 import {
   validateRequest,
   validateHttpMethod,
   handleError,
   corsMiddleware,
   handleResponse,
-} from "./_helpers";
+} from "~/src/_helpers";
 
-import { HTTPMethods, AsyncHandler } from "./_types";
+import { HTTPMethods, AsyncHandler } from "~/types";
 
 const handler: AsyncHandler = corsMiddleware(
   async (event, context) => {

@@ -1,4 +1,4 @@
-import getProducts from "~/api/_endpoints/get-products";
+import getProducts from "~/src/_endpoints/get-products";
 import { getEvent, responseBody, fetchResponse } from "../utils";
 import crossFetch from "cross-fetch";
 

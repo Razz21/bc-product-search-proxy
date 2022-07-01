@@ -1,5 +1,5 @@
-import * as helpers from "~/api/_helpers";
-import { HTTPMethod } from "~/api/_types";
+import * as helpers from "~/src/_helpers";
+import { HTTPMethod } from "~/types";
 import { getContext, getEvent } from "../utils";
 import joi from "joi";
 

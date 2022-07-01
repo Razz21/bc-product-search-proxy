@@ -51,7 +51,7 @@ export default {
   }).unknown(true),
   products: joi.object({
     headers,
-    query: joi.object({
+    queryStringParameters: joi.object({
       ids: joi.versionArray().items(joi.string()).required(),
     }).unknown(true)
   }).unknown(true)

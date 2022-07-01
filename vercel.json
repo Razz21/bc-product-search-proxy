@@ -3,5 +3,21 @@
     "env": {
       "NODEJS_AWS_HANDLER_NAME": "handler"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "public" }
+    },
+    {
+      "src": "api/*.ts",
+      "use": "@vercel/node",
+      "config": { "zeroConfig": true }
+    },
+    {
+      "src": "src/**/*.ts",
+      "use": "@vercel/node"
+    }
+  ]
 }

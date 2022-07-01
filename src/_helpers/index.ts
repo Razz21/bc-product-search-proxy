@@ -68,3 +68,9 @@ export const corsMiddleware =
     }
     return fn(event, context);
   };
+
+export const decodeBodyString = (event: ServerlessRequest) => {
+  if (event.isBase64Encoded) {
+    event.body = Buffer.from(event.body, 'base64').toString();
+  }
+}

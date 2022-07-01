@@ -6,12 +6,14 @@ import {
   handleError,
   corsMiddleware,
   handleResponse,
+  decodeBodyString,
 } from "../src/_helpers";
 
 import { HTTPMethods, AsyncHandler } from "../types";
 
 const handler: AsyncHandler = corsMiddleware(
   async (event, context) => {
+    decodeBodyString(event)
     return {
       statusCode: 200,
       body: event.body

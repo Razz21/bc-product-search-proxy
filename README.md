@@ -45,7 +45,7 @@ headers;
     Content-Type; application/json
     X-Auth-Token; {AUTH-TOKEN}
     store-hash; {STORE-ID}
-    api-version; {API-VER}
+    api-version; {API-VERSION}
 body;
     {
       "search_text": "shoe",
@@ -71,7 +71,7 @@ headers;
     Content-Type; application/json
     X-Auth-Token; {AUTH-TOKEN}
     store-hash; {STORE-ID}
-    api-version; {API-VER}
+    api-version; {API-VERSION}
 
 http://localhost:3000/products?ids=120,121
 ```

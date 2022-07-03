@@ -1,0 +1,23 @@
+[build]
+  command = "npm install && npm run build"
+  functions = "api/"
+  publish = "public/"
+[dev]
+  autoLaunch = false
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Request-Method = "GET, POST, OPTIONS"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Request-Method = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, Access-Control-Allow-Origin"
